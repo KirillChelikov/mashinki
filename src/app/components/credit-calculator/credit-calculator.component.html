@@ -1,6 +1,6 @@
 <div class="credit-calc-wrapper">
 
-  <div class="content">
+  <div class="content" *ngIf="!requestSent">
     <div class="close-cross" (click)="closeModal()">X</div>
     Расчет кредита
     <app-car [car]="car"></app-car>
@@ -53,7 +53,11 @@
       <p>сумма выплат: {{this.creditData.initialFeeValue}}</p>
       <p>процентная ставка {{this.creditData.interestRate}}</p>
       <p>платеж в месяц {{this.creditData.loanPaymentActual}}</p>
+      <button (click)="sendRequest()"> Отправить заявку</button>
     </div>
   </div>
-
+ <div class="content" *ngIf="requestSent">
+   <div class="close-cross" (click)="closeModal()">X</div>
+   <p> ВАША ЗАЯВКА ОТПРАВЛЕНА!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! </p>
+ </div>
 </div>

@@ -11,15 +11,15 @@ import {Slider} from '../../interfaces/Slider';
 export class CreditCalculatorComponent implements OnInit {
   @Input() car: Car;
   @Output() close = new EventEmitter<null>();
-
+  private requestSent = false;
   public creditData: CreditCalculatorData = {
     initialFeePercents: 5,
-    creditTerm: 60,
+    creditTerm: null,
     initialFeeValue: 10000,
     loanPayment: 10000,
     interestRate: 8,
     totalCreditPayment: null,
-    loanPaymentActual: null,
+    loanPaymentActual: 10000,
   };
   public initialFeeSlider: Slider;
   public loanPaymentSlider: Slider;
@@ -31,7 +31,7 @@ export class CreditCalculatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.creditTermSlider = {
-      min: 0,
+      min: 12,
       max: 120,
       step: 12,
     };
@@ -71,8 +71,12 @@ export class CreditCalculatorComponent implements OnInit {
       this.creditData.interestRate = 12.3;
       this.creditData.loanPaymentActual = 9800;
     } else {
-      this.creditData.interestRate = 99.9;
-      this.creditData.loanPaymentActual = 1000000000000000;
+      this.creditData.interestRate = 8;
+      this.creditData.loanPaymentActual = this.creditData.loanPayment;
     }
+  }
+
+  sendRequest(): void {
+    this.requestSent = true;
   }
 }

@@ -6,7 +6,9 @@
   padding: 10px;
   border: 1px solid black;
   margin: 10px;
+  min-width: 300px;
 }
 .car-image {
   max-width: 300px;
+  max-height: 200px;
 }
