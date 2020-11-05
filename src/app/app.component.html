@@ -1,5 +1,12 @@
 <div class="card-wrapper">
-<app-car *ngFor="let car of cars" [car]="car">
+<app-car *ngFor="let car of cars" [car]="car" (click)="currentCar = car">
 
 </app-car>
+
 </div>
+<app-credit-calculator *ngIf="currentCar" [car]="currentCar" (close)="currentCar = null">
+
+</app-credit-calculator>
+
+
+

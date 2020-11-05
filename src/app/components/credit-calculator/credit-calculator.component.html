@@ -1,0 +1,59 @@
+<div class="credit-calc-wrapper">
+
+  <div class="content">
+    <div class="close-cross" (click)="closeModal()">X</div>
+    Расчет кредита
+    <app-car [car]="car"></app-car>
+    Настройки кредита
+    <div class="credit-setting">
+      <div class="slider-wrapper">
+        Первоначальный взнос
+        <div class="top-bar">
+          <p>{{creditData.initialFeeValue}} </p>
+          <p> {{creditData.initialFeePercents}} %</p>
+        </div>
+      <mat-slider
+        (change)="recalculateInitialFee()"
+        [min]="initialFeeSlider.min"
+        [max]="initialFeeSlider.max"
+        [step]="initialFeeSlider.step"
+        [value]="creditData.initialFeePercents"
+        [(ngModel)]="creditData.initialFeePercents"></mat-slider>
+      </div>
+      <div class="slider-wrapper">
+        Готов платить в месяц
+        <div class="top-bar">
+          <p>до {{creditData.loanPayment}} руб.</p>
+        </div>
+      <mat-slider
+        [min]="loanPaymentSlider.min"
+        [max]="loanPaymentSlider.max"
+        [step]="loanPaymentSlider.step"
+        [value]="creditData.loanPayment"
+        [(ngModel)]="creditData.loanPayment"
+        (change)="recalculateLoanPayment()"></mat-slider>
+      </div>
+      <div class="slider-wrapper">
+        Срок кредита
+        <div class="top-bar">
+          <p>{{creditData.creditTerm}} месяцев </p>
+          <p> {{creditData.creditTerm / 12}} лет </p>
+        </div>
+      <mat-slider
+        [min]="creditTermSlider.min"
+        [max]="creditTermSlider.max"
+        [step]="creditTermSlider.step"
+        [value]="creditData.creditTerm"
+        [(ngModel)]="creditData.creditTerm"
+        (change)="recalculateCreditTerm()"></mat-slider>
+      </div>
+    </div>
+
+    <div>
+      <p>сумма выплат: {{this.creditData.initialFeeValue}}</p>
+      <p>процентная ставка {{this.creditData.interestRate}}</p>
+      <p>платеж в месяц {{this.creditData.loanPaymentActual}}</p>
+    </div>
+  </div>
+
+</div>
