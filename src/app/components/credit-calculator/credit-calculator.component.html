@@ -12,26 +12,26 @@
           <p>{{creditData.initialFeeValue}} </p>
           <p> {{creditData.initialFeePercents}} %</p>
         </div>
-      <mat-slider
-        (change)="recalculateInitialFee()"
-        [min]="initialFeeSlider.min"
-        [max]="initialFeeSlider.max"
-        [step]="initialFeeSlider.step"
-        [value]="creditData.initialFeePercents"
-        [(ngModel)]="creditData.initialFeePercents"></mat-slider>
+        <mat-slider
+          (change)="recalculateInitialFee()"
+          [min]="initialFeeSlider.min"
+          [max]="initialFeeSlider.max"
+          [step]="initialFeeSlider.step"
+          [value]="creditData.initialFeePercents"
+          [(ngModel)]="creditData.initialFeePercents"></mat-slider>
       </div>
       <div class="slider-wrapper">
         Готов платить в месяц
         <div class="top-bar">
           <p>до {{creditData.loanPayment}} руб.</p>
         </div>
-      <mat-slider
-        [min]="loanPaymentSlider.min"
-        [max]="loanPaymentSlider.max"
-        [step]="loanPaymentSlider.step"
-        [value]="creditData.loanPayment"
-        [(ngModel)]="creditData.loanPayment"
-        (change)="recalculateLoanPayment()"></mat-slider>
+        <mat-slider
+          [min]="loanPaymentSlider.min"
+          [max]="loanPaymentSlider.max"
+          [step]="loanPaymentSlider.step"
+          [value]="creditData.loanPayment"
+          [(ngModel)]="creditData.loanPayment"
+          (change)="recalculateLoanPayment()"></mat-slider>
       </div>
       <div class="slider-wrapper">
         Срок кредита
@@ -39,13 +39,13 @@
           <p>{{creditData.creditTerm}} месяцев </p>
           <p> {{creditData.creditTerm / 12}} лет </p>
         </div>
-      <mat-slider
-        [min]="creditTermSlider.min"
-        [max]="creditTermSlider.max"
-        [step]="creditTermSlider.step"
-        [value]="creditData.creditTerm"
-        [(ngModel)]="creditData.creditTerm"
-        (change)="recalculateCreditTerm()"></mat-slider>
+        <mat-slider
+          [min]="creditTermSlider.min"
+          [max]="creditTermSlider.max"
+          [step]="creditTermSlider.step"
+          [value]="creditData.creditTerm"
+          [(ngModel)]="creditData.creditTerm"
+          (change)="recalculateCreditTerm()"></mat-slider>
       </div>
     </div>
 
@@ -56,8 +56,8 @@
       <button (click)="sendRequest()"> Отправить заявку</button>
     </div>
   </div>
- <div class="content" *ngIf="requestSent">
-   <div class="close-cross" (click)="closeModal()">X</div>
-   <p> ВАША ЗАЯВКА ОТПРАВЛЕНА!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! </p>
- </div>
+  <div class="content" *ngIf="requestSent">
+    <div class="close-cross" (click)="closeModal()">X</div>
+    <p> ВАША ЗАЯВКА ОТПРАВЛЕНА!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! </p>
+  </div>
 </div>
